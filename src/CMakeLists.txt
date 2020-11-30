@@ -108,6 +108,8 @@ set (mraa_LIB_ARM_SRCS_NOAUTO
   ${PROJECT_SOURCE_DIR}/src/arm/rockpi4.c
   ${PROJECT_SOURCE_DIR}/src/arm/rockpis.c
   ${PROJECT_SOURCE_DIR}/src/arm/rockpin10.c
+  ${PROJECT_SOURCE_DIR}/src/arm/rockpie.c
+  ${PROJECT_SOURCE_DIR}/src/arm/rockpie_v11.c
   ${PROJECT_SOURCE_DIR}/src/arm/adlink_ipi.c
 )
 
