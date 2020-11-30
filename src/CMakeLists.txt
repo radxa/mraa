@@ -57,6 +57,7 @@ set (mraa_LIB_X86_SRCS_NOAUTO
   ${PROJECT_SOURCE_DIR}/src/x86/iei_tank.c
   ${PROJECT_SOURCE_DIR}/src/x86/adlink-ipi.c
   ${PROJECT_SOURCE_DIR}/src/x86/up_xtreme.c
+  ${PROJECT_SOURCE_DIR}/src/x86/rockpix.c
 )
 
 message (STATUS "INFO - Adding support for platform ${MRAAPLATFORMFORCE}")
