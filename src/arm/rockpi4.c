@@ -23,6 +23,7 @@
 #define PLATFORM_NAME_ROCK_PI_4 "ROCK Pi 4"
 #define PLATFORM_NAME_ROCK_PI_4A "ROCK PI 4A"
 #define PLATFORM_NAME_ROCK_PI_4B "ROCK PI 4B"
+#define PLATFORM_NAME_ROCK_PI_4C "ROCK PI 4C"
 #define MAX_SIZE 64
 
 const char* rockpi4_serialdev[MRAA_ROCKPI4_UART_COUNT] = { "/dev/ttyS2","/dev/ttyS4"};
@@ -69,13 +70,15 @@ mraa_rockpi4()
     b->no_bus_mux = 1;
     b->phy_pin_count = MRAA_ROCKPI4_PIN_COUNT + 1;
 
+    const char *Rockpi;
     if (mraa_file_exist(DT_BASE "/model")) {
         // We are on a modern kernel, great!!!!
-        if (mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_ROCK_PI_4)  ||
-            mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_ROCK_PI_4A) ||
-            mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_ROCK_PI_4B)
+        if (mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_ROCK_PI_4) ? Rockpi = PLATFORM_NAME_ROCK_PI_4 : 0 ||
+            mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_ROCK_PI_4A) ? Rockpi = PLATFORM_NAME_ROCK_PI_4A : 0 ||
+            mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_ROCK_PI_4B) ? Rockpi = PLATFORM_NAME_ROCK_PI_4B : 0 ||
+            mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_ROCK_PI_4C) ? Rockpi = PLATFORM_NAME_ROCK_PI_4C : 0
             ) {
-            b->platform_name = PLATFORM_NAME_ROCK_PI_4;
+            b->platform_name = Rockpi;
             b->uart_dev[0].device_path = (char*) rockpi4_serialdev[0];
             b->uart_dev[1].device_path = (char*) rockpi4_serialdev[1];
         }
